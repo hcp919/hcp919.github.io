@@ -1,35 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
     <title>Document</title>
-
-    <!-- 可以把js代码编写到外埠js文件夹中，然后通过script标签 
-    推荐使用   写到外部文件中可以在不同的文件中引用  也可以利用浏览器的缓存机制
-            同时  一旦用于引用外部文件  script就不能再在内部写代码 -->
-    
-<script type="text/javascript" src="/JS/test.js"></script>
-    <!-- <script type="text/javascript">
-        alert("弹窗,js代码从上到下一行一行执行");
-        document.write("document作用：向body中输出一个内容");
-        console.log("向控制台输出内容");
-    </script> -->
 </head>
+
 <body>
-    <div class="container">
-        <input class="date" id="date1" >
-        <button class="button" id="button1">获取</button>
+    <div class="wrapper">
+        <div class="form-container">
+            <p class="title">Login</p>
+            <form class="form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" value="" />
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" value="" />
+                    <div class="forgot">
+                        <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
+                    </div>
+                </div>
+                <a href="second.html" class="signin">Sign in</a>
+            </form>
+            <p class="signup">Don't have an account?
+                <a rel="noopener noreferrer" href="#" class="">Sign up</a>
+            </p>
+        </div>
     </div>
-
-
-        <!-- js的编写位置结构与行为耦合 不推荐使用 -->
-        <!-- 可以将js代码编写到标签的onclick属性中 -->
-        <!-- <input class="input" type="datetime">
-        <button class="submit" onclick="alert('别点我了2z！');">别点我</button> -->
-        <!-- 可以将js代码编写到超链接的href属性中，点击超链接执行js代码 -->
-        <!-- <a href="javascript:alert('你还真点');">点我一下</a>
-        <a href="javascript:;">使得超链接被点击无反应的常用操作：利用js处理一些功能</a> -->
+    <!-- <script>
+        // 1 引入
+        const mysql = require('mysql');
+        alert("aa");
+        // 2 创建链接配置
+        const conn = mysql.createConnection({
+            host: 'localhost',// 主机名 （服务器地址）
+            port: '3306', //端口号
+            user: 'root',    //用户名
+            password: 'wo20031014',    // 密码
+            database: 'web'  // 写上自己要连接的数据库名字
+        })
+        // 3 建立链接
+        conn.connect((err) => {
+            if (err) {
+                throw (err);
+            }
+            console.log('数据库连接成功！')
+        })
+        var btn = document.querySelector('.btn');
+        btn.onclick = function () {
+            alert("hh");
+            const usernamess = document.getElementById('username').value;
+            const passwordss = document.getElementById('password').value;
+            alert(usernamess);
+            alert(passwordss);
+            // 4 生成sql语句 增删改查操作
+            let sql = 'select * from users';
+            //5  执行sql语句
+            conn.query(sql, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    return
+                }
+                // 6 处理结果
+                if (result) {
+                    for (var i = 0; i < result.length; i++) {
+                        if (b == result[i].usernames && a == result[i].passwords) {
+                            console.log("登录成功");
+                            // window.location("./first.html");
+                            return;
+                        }
+                    }
+                    console.log("用户名或密码错误");
+                }
+            })
+        }
+    </script> -->
 </body>
+
 </html>
